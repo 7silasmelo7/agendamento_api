@@ -3,7 +3,13 @@
 API REST desenvolvida em Python + Flask, utilizando SQLite como banco de dados e documentada com Swagger (OpenAPI).
 O sistema permite cadastrar, listar, buscar e remover agendamentos de profissionais com seus respectivos pacientes.
 
+
+
+
 ## 🚀 Tecnologias Utilizadas
+
+
+
 
 ![Python 3.12](https://img.shields.io/badge/Python%203.12-6d28d9
 )
@@ -20,11 +26,18 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 ![Pydantic](https://img.shields.io/badge/Pydantic-6d28d9
 )
 
-![Flask-CORS](https://img.shields.io/badge/Flask-CORS-6d28d9)
+![Flask-CORS](https://img.shields.io/badge/Flask-CORS-6d28d9
+)
+
+
+
+
 
 ## 📂 Estrutura do Projeto
 
+
 ![App Screenshot](https://i.ibb.co/V0BbMHcM/Captura-de-tela-2026-04-01-101919.png)
+
 
 ## 🗄️ Banco de Dados
 
@@ -45,6 +58,8 @@ A API utiliza SQLite, criado automaticamente na pasta  ao iniciar o servidor.
 
 
 #### OBS: Restrição de unicidade para profissional, data e horário, evitando assim agendamentos duplicados.
+
+
 
 ## 📌 Rotas da API
 
@@ -99,14 +114,39 @@ DELETE /agendamento?profissional=Ana&paciente=Carlos
 
 • 	200 – Removido !
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 📄 Documentação Swagger
 
 A documentação completa está disponível automaticamente em:
 
 ```bash
   http://localhost:5000/openapi
-
-
+```
 ## 🛠️ Como Executar o Projeto
 
 1. Criar ambiente virtual (recomendado)
