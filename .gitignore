@@ -1,0 +1,13 @@
+# Python .gitignore 
+__pycache__/ 
+*.pyc 
+*.pyo 
+*.pyd 
+.Python 
+env/ 
+venv/ 
+.venv/ 
+database/*.sqlite3 
+database/*.db 
+*.log 
+C:/temp/agendamento_logs/ 
