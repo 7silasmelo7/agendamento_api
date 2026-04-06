@@ -6,7 +6,6 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 
 ## 🚀 Tecnologias Utilizadas
 
----
 
 
 
@@ -15,7 +14,7 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 ![Flask](https://img.shields.io/badge/Flask-6d28d9
 )
 ![Flask-OpenAPI3 (Swagger)](https://img.shields.io/badge/Flask-OpenAPI3%20(Swagger)-6d28d9)
----
+
 
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-6d28d9
 )
