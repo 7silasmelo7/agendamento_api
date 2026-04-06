@@ -1,4 +1,4 @@
-📘 Agenda API – Sistema de Agendamentos
+## 📘 Agenda API – Sistema de Agendamentos
 
 API REST desenvolvida em Python + Flask, utilizando SQLite como banco de dados e documentada com Swagger (OpenAPI).
 O sistema permite cadastrar, listar, buscar e remover agendamentos de profissionais com seus respectivos pacientes.
@@ -10,8 +10,10 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 
 ![Python 3.12](https://img.shields.io/badge/Python%203.12-6d28d9
 )
+
 ![Flask](https://img.shields.io/badge/Flask-6d28d9
 )
+
 ![Flask-OpenAPI3 (Swagger)](https://img.shields.io/badge/Flask-OpenAPI3%20(Swagger)-6d28d9)
 
 
