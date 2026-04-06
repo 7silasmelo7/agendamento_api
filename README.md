@@ -8,7 +8,6 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 
 
 
-
 ![Python 3.12](https://img.shields.io/badge/Python%203.12-6d28d9
 )
 ![Flask](https://img.shields.io/badge/Flask-6d28d9
