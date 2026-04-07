@@ -46,6 +46,12 @@ def add_agenda(form: AgendamentoSchema):
         horario_obj = form.horario
     except ValueError:
         return {"mensagem": "Formato de data ou horário inválido. Use 'YYYY-MM-DD' e 'HH:MM'."}, 400
+    
+    # impede a inserção de datas passadas
+    hoje = date.today()
+    if data_obj < hoje:
+        return {"mensagem": "Não é permitido fazer agendamento "
+        "com data retroativa."}, 400
 
     # cria sessão ANTES de qualquer uso
     session = Session()
@@ -194,8 +200,8 @@ def del_agendamento(query: AgendamentoBuscaSchema):
     paciente = query.paciente
 
 
-    logger.debug(f"Profissional: {repr(profissional)}")
-    logger.debug(f"Paciente: {repr(paciente)}")
+    print(">>> PROF:", repr(profissional))
+    print(">>> PAC:", repr(paciente))
 
     profissional_nome = (profissional or "").strip().lower()
     paciente_nome = (paciente or "").strip().lower()
