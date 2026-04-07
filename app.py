@@ -52,6 +52,12 @@ def add_agenda(form: AgendamentoSchema):
     if data_obj < hoje:
         return {"mensagem": "Não é permitido fazer agendamento "
         "com data retroativa."}, 400
+    
+    # impede a inserção de horários retroativos para o mesmo dia
+    agora = datetime.now().time()
+    if data_obj == hoje and horario_obj < agora:
+        return {"mensagem": "Não é permitido fazer agendamento "
+        "com horário retroativo para o mesmo dia."}, 400
 
     # cria sessão ANTES de qualquer uso
     session = Session()
