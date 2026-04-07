@@ -199,10 +199,10 @@ def del_agendamento(query: AgendamentoBuscaSchema):
     profissional = query.profissional
     paciente = query.paciente
 
+    logger.debug(f"Profissional: {repr(profissional)}")
+    logger.debug(f"Paciente: {repr(paciente)}")
 
-    print(">>> PROF:", repr(profissional))
-    print(">>> PAC:", repr(paciente))
-
+    
     profissional_nome = (profissional or "").strip().lower()
     paciente_nome = (paciente or "").strip().lower()
     
