@@ -27,10 +27,6 @@ O sistema permite cadastrar, listar, buscar e remover agendamentos de profission
 )
 
 ![Flask-CORS](https://img.shields.io/badge/Flask-CORS-6d28d9
-)
-
-
-
 
 
 ## 📂 Estrutura do Projeto
@@ -113,32 +109,6 @@ Respostas:
 DELETE /agendamento?profissional=Ana&paciente=Carlos
 
 • 	200 – Removido !
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 📄 Documentação Swagger
 

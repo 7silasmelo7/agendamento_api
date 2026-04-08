@@ -57,7 +57,7 @@ def add_agenda(form: AgendamentoSchema):
     agora = datetime.now().time()
     if data_obj == hoje and horario_obj < agora:
         return {"mensagem": "Não é permitido fazer agendamento "
-        "com horário retroativo para o mesmo dia."}, 400
+        "com horário retroativo."}, 400
 
     # cria sessão ANTES de qualquer uso
     session = Session()
@@ -205,10 +205,10 @@ def del_agendamento(query: AgendamentoBuscaSchema):
     profissional = query.profissional
     paciente = query.paciente
 
-    logger.debug(f"Profissional: {repr(profissional)}")
-    logger.debug(f"Paciente: {repr(paciente)}")
 
-    
+    print(">>> PROF:", repr(profissional))
+    print(">>> PAC:", repr(paciente))
+
     profissional_nome = (profissional or "").strip().lower()
     paciente_nome = (paciente or "").strip().lower()
     
