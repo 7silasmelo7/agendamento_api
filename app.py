@@ -237,7 +237,6 @@ def del_agendamento(query: AgendamentoBuscaSchema):
         "mensagem": "Agendamento removido", "nome": f"{profissional} - {paciente}"
     }, 200
 
-
 @app.put('/agendamento', tags=[agenda_tag],
          responses={"200": AgendamentoViewSchema, "404": ErrorSchema, "400": ErrorSchema, "409": ErrorSchema})
 def update_agendamento(form: AgendamentoSchema):
