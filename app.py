@@ -237,6 +237,72 @@ def del_agendamento(query: AgendamentoBuscaSchema):
         "mensagem": "Agendamento removido", "nome": f"{profissional} - {paciente}"
     }, 200
 
+
+@app.put('/agendamento', tags=[agenda_tag],
+         responses={"200": AgendamentoViewSchema, "404": ErrorSchema, "400": ErrorSchema, "409": ErrorSchema})
+def update_agendamento(form: AgendamentoSchema):
+    """
+    Atualiza um agendamento existente.
+    A identificação é feita por profissional + paciente.
+    """
+
+    session = Session()
+
+    # Normaliza nomes
+    profissional_nome = form.profissional.strip().lower()
+    paciente_nome = form.paciente.strip().lower()
+
+    # Busca o registro existente
+    agendamento = session.query(Agendamento).filter(
+        func.lower(func.trim(Agendamento.profissional)) == profissional_nome,
+        func.lower(func.trim(Agendamento.paciente)) == paciente_nome
+    ).first()
+
+    if not agendamento:
+        session.close()
+        return {"mensagem": "Agendamento não encontrado."}, 404
+
+    # Valida data e horário
+    hoje = date.today()
+    agora = datetime.now().time()
+
+    if form.data < hoje:
+        return {"mensagem": "Não é permitido atualizar para uma data retroativa."}, 400
+
+    if form.data == hoje and form.horario < agora:
+        return {"mensagem": "Não é permitido atualizar para um horário retroativo."}, 400
+
+    # Verifica conflito de horário com outro agendamento
+    conflito = session.query(Agendamento).filter(
+        func.lower(Agendamento.profissional) == profissional_nome,
+        Agendamento.data == form.data,
+        Agendamento.horario == form.horario,
+        Agendamento.id != agendamento.id
+    ).first()
+
+    if conflito:
+        return {"mensagem": "Este profissional já possui um agendamento neste dia e horário."}, 409
+
+    # Atualiza os campos
+    agendamento.servico = form.servico
+    agendamento.valor = form.valor
+    agendamento.data = form.data
+    agendamento.horario = form.horario
+
+    try:
+        session.commit()
+        logger.debug(f"Agendamento atualizado: {agendamento.id}")
+        return mostra_agenda(agendamento), 200
+
+    except Exception as e:
+        session.rollback()
+        logger.exception(f"Erro ao atualizar agendamento: {e}")
+        return {"mensagem": "Erro ao atualizar o agendamento."}, 400
+
+    finally:
+        session.close()
+
+
     
 
 
